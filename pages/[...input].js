@@ -1,7 +1,9 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Main from "../views/Main";
+
 import { rageFlipped } from "../lib/flip";
+import { getAccessibleOutput } from "../lib/screenreaders";
 
 export async function getServerSideProps(context) {
   const input = context.params.input.join("/");
@@ -15,7 +17,10 @@ export default function Input({ input }) {
     <div className={styles.container}>
       <Head>
         <title>RageFlip.Me</title>
-        <meta name="description" content={rageFlipped(input)} />
+        <meta
+          name="description"
+          content={`${rageFlipped(input)}\n\n${getAccessibleOutput(input)}`}
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

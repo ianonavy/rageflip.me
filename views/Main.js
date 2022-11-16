@@ -1,18 +1,19 @@
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
 
 import { rageFlipped } from "../lib/flip";
+import { getAccessibleOutput } from "../lib/screenreaders";
 
 export default function Main({ textToFlip = "" }) {
   const [text, setText] = useState(textToFlip);
   const [output, setOutput] = useState();
+  const [accessibleOutput, setAccessibleOutput] = useState();
   const [clipboard, setClipboard] = useState();
   const router = useRouter();
   const [location, setLocation] = useState();
-
   const [copied, setCopied] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     setClipboard(navigator.clipboard);
@@ -21,6 +22,7 @@ export default function Main({ textToFlip = "" }) {
 
   useEffect(() => {
     setOutput(rageFlipped(text));
+    setAccessibleOutput(getAccessibleOutput(text));
   }, [text]);
 
   useEffect(() => {
@@ -28,7 +30,8 @@ export default function Main({ textToFlip = "" }) {
   }, [textToFlip]);
 
   const copy = async () => {
-    await clipboard.writeText(output);
+    const toCopy = checked ? `${output} ${getAccessibleOutput(text)}` : output;
+    await clipboard.writeText(toCopy);
     setCopied(true);
   };
   const shareLink = async () => {
@@ -44,6 +47,10 @@ export default function Main({ textToFlip = "" }) {
     setCopied(false);
   };
 
+  const onCheck = (e) => {
+    setChecked(e.target.checked);
+  };
+
   return (
     <main className={styles.main}>
       <h1>RageFlip.Me</h1>
@@ -53,12 +60,36 @@ export default function Main({ textToFlip = "" }) {
       </div>
       <div className={styles.output}>
         <div id="output-text">{output}</div>
-        <button id="copy" onClick={copy}>
-          Copy
-        </button>
-        <button id="copy" onClick={shareLink}>
-          Share link
-        </button>
+        <div
+          id="output-text"
+          hidden={!checked}
+          className={styles.accessibleOutput}
+        >
+          {accessibleOutput}
+        </div>
+        <div className={styles.controls}>
+          <button id="copy" onClick={copy}>
+            Copy
+          </button>
+          <button id="copy" onClick={shareLink}>
+            Share link
+          </button>
+          <div>
+            <input
+              id="accessibleMode"
+              name="accessibleMode"
+              type="checkbox"
+              defaultChecked={checked}
+              onChange={onCheck}
+            />
+            <label
+              className={styles.accessibleModeLabel}
+              htmlFor="accessibleMode"
+            >
+              Support screen readers
+            </label>
+          </div>
+        </div>
         <div
           className={`${styles.copied} ${
             copied ? styles.visible : styles.hidden

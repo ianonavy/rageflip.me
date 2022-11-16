@@ -158,3 +158,16 @@
   text-decoration: underline;
   font-size: small;
 }
+
+.accessibleModeLabel {
+  font-size: small;
+  margin-left: 0.25rem;
+}
+
+.controls {
+  margin: 1rem;
+}
+
+.accessibleOutput {
+  font-size: x-small;
+}
