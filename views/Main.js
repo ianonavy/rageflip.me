@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { rageFlipped } from "../lib/flip";
 
-export default function Main({ textToFlip }) {
+export default function Main({ textToFlip = "" }) {
   const [text, setText] = useState(textToFlip);
   const [output, setOutput] = useState();
   const [clipboard, setClipboard] = useState();
