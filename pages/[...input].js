@@ -14,8 +14,8 @@ export default function Input({ input }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>{rageFlipped(input)}</title>
-        <meta name="description" content="rageflip.me" />
+        <title>RageFlip.Me</title>
+        <meta name="description" content={rageFlipped(input)} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
