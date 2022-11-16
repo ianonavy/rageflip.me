@@ -1,5 +1,5 @@
 import styles from "../styles/Home.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 
 import { rageFlipped } from "../lib/flip";
@@ -10,6 +10,8 @@ export default function Main({ textToFlip }) {
   const [clipboard, setClipboard] = useState();
   const router = useRouter();
   const [location, setLocation] = useState();
+
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     setClipboard(navigator.clipboard);
@@ -26,16 +28,19 @@ export default function Main({ textToFlip }) {
 
   const copy = async () => {
     await clipboard.writeText(output);
+    setCopied(true);
   };
   const shareLink = async () => {
     const url = new URL(location.href);
     url.pathname = "/" + text;
     router.push(url);
     await clipboard.writeText(url);
+    setCopied(true);
   };
 
   const handleChange = (e) => {
     setText(e.target.value);
+    setCopied(false);
   };
 
   return (
@@ -53,6 +58,13 @@ export default function Main({ textToFlip }) {
         <button id="copy" onClick={shareLink}>
           Share link
         </button>
+        <div
+          className={`${styles.copied} ${
+            copied ? styles.visible : styles.hidden
+          }`}
+        >
+          Copied to clipboard
+        </div>
       </div>
     </main>
   );

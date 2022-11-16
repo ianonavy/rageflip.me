@@ -136,3 +136,17 @@
 .input label {
   margin-right: 0.5rem;
 }
+
+.copied {
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
