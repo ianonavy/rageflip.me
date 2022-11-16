@@ -150,3 +150,11 @@
   visibility: hidden;
   opacity: 0;
 }
+
+.support {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  text-decoration: underline;
+  font-size: small;
+}

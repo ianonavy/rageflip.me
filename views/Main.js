@@ -1,6 +1,7 @@
 import styles from "../styles/Home.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 import { rageFlipped } from "../lib/flip";
 
@@ -66,6 +67,16 @@ export default function Main({ textToFlip }) {
           Copied to clipboard
         </div>
       </div>
+
+      <footer>
+        <a
+          className={styles.support}
+          href="//www.buymeacoffee.com/justapotato"
+          target="_blank"
+        >
+          Donate a potato
+        </a>
+      </footer>
     </main>
   );
 }
