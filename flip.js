@@ -1,55 +1,146 @@
-//source: https://gist.github.com/jasny/9807617
+// adapted from https://github.com/lakenen/flip-text
 
-//this script is based on coding by Reverse Fad http://www.revfad.com
-function flip() {
-  var result = flipString(document.f.original.value.toLowerCase());
-  document.f.flipped.value = result;
-}
-function flipString(aString) {
-  var last = aString.length - 1;
-  var result = new Array(aString.length);
-  for (var i = last; i >= 0; --i) {
-    var c = aString.charAt(i);
-    var r = flipTable[c];
-    result[last - i] = r != undefined ? r : c;
-  }
-  return result.join("");
-}
-var flipTable = {
-  a: "\u0250",
+const chars = {
+  // uppercase (incomplete)
+  A: "∀",
+  B: "𐐒",
+  C: "Ɔ",
+  E: "Ǝ",
+  F: "Ⅎ",
+  G: "פ",
+  H: "H",
+  I: "I",
+  J: "ſ",
+  L: "˥",
+  M: "W",
+  N: "N",
+  P: "Ԁ",
+  R: "ᴚ",
+  T: "⊥",
+  U: "∩",
+  V: "Λ",
+  Y: "⅄",
+
+  // lowercase
+  a: "ɐ",
   b: "q",
-  c: "\u0254",
+  c: "ɔ",
   d: "p",
-  e: "\u01DD",
-  f: "\u025F",
-  g: "\u0183",
-  h: "\u0265",
-  i: "\u0131",
-  j: "\u027E",
-  k: "\u029E",
-  //l : '\u0283',
-  m: "\u026F",
+  e: "ǝ",
+  f: "ɟ",
+  g: "ƃ",
+  h: "ɥ",
+  i: "ᴉ",
+  j: "ɾ",
+  k: "ʞ",
+  m: "ɯ",
   n: "u",
-  r: "\u0279",
-  t: "\u0287",
-  v: "\u028C",
-  w: "\u028D",
-  y: "\u028E",
-  ".": "\u02D9",
-  "[": "]",
-  "(": ")",
-  "{": "}",
-  "?": "\u00BF",
-  "!": "\u00A1",
+  p: "d",
+  q: "b",
+  r: "ɹ",
+  t: "ʇ",
+  u: "n",
+  v: "ʌ",
+  w: "ʍ",
+  y: "ʎ",
+
+  // numbers
+  1: "Ɩ",
+  2: "ᄅ",
+  3: "Ɛ",
+  4: "ㄣ",
+  5: "ϛ",
+  6: "9",
+  7: "ㄥ",
+  8: "8",
+  9: "6",
+  0: "0",
+
+  // special chars
+  ".": "˙",
+  ",": "'",
   "'": ",",
+  '"': ",,",
+  "`": ",",
   "<": ">",
-  _: "\u203E",
-  ";": "\u061B",
-  "\u203F": "\u2040",
-  "\u2045": "\u2046",
-  "\u2234": "\u2235",
-  "\r": "\n",
+  ">": "<",
+  "∴": "∵",
+  "&": "⅋",
+  _: "‾",
+  "?": "¿",
+  "!": "¡",
+  "[": "]",
+  "]": "[",
+  "(": ")",
+  ")": "(",
+  "{": "}",
+  "}": "{",
+
+  // russian chars UPPERCASE
+  А: "∀",
+  Б: "ܦ",
+  В: "ꓭ",
+  Г: "⅃",
+  Д: "ჩ",
+  Е: "Ǝ",
+  З: "Ɛ",
+  Й: "И̯",
+  К: "ꓘ",
+  Л: "Ѵ",
+  М: "ꟽ",
+  П: "ⵡ",
+  Р: "Ԁ",
+  С: "Ͻ",
+  Т: "ꓕ",
+  У: "ʎ",
+  Ц: "ŉ",
+  Ч: "Ⴙ",
+  Ш: "ᗰ",
+  Ь: "ᑫ",
+  Э: "Є",
+  Ю: "Ꙕ",
+  Я: "ᖉ",
+
+  // russian chars lowercase
+  а: "ɐ",
+  б: "ܦ",
+  в: "ʚ",
+  г: "⅃",
+  д: "ჩ",
+  е: "ǝ",
+  з: "ԑ",
+  й: "и̯",
+  к: "ʞ",
+  л: "ѵ",
+  м: "ᥕ",
+  п: "⊔",
+  р: "d",
+  с: "ɔ",
+  т: "ꓕ",
+  у: "ʎ",
+  ц: "ŉ",
+  ч: "h",
+  ш: "m",
+  ь: "৭",
+  э: "є",
+  ю: "ꙕ",
+  я: "ʁ",
 };
-for (i in flipTable) {
-  flipTable[flipTable[i]] = i;
+
+Object.keys(chars).forEach(function (key) {
+  var value = chars[key];
+  if (!chars[value]) {
+    chars[value] = key;
+  }
+});
+
+function flipString(str) {
+  var result = "",
+    c = str.length,
+    ch = "";
+  for (; c >= 0; --c) {
+    ch = str.charAt(c);
+    result += chars[ch] || chars[ch.toLowerCase()] || ch;
+  }
+  return result;
 }
