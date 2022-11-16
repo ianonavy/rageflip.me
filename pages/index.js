@@ -8,6 +8,11 @@ export default function Home() {
       <Head>
         <title>RageFlip.Me</title>
         <meta name="description" content="rageflip.me" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
