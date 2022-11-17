@@ -129,16 +129,21 @@
   }
 }
 
-.input,
-.output {
+.input {
   margin: 0.5rem;
 }
+
+.output {
+  margin: 1rem;
+}
+
 .input label {
   margin-right: 0.5rem;
 }
 
 .copied {
-  transition: visibility 0s, opacity 0.5s linear;
+  transition: visibility 0s, opacity 0.2s linear;
+  font-size: small;
 }
 
 .visible {
@@ -170,4 +175,30 @@
 
 .accessibleOutput {
   font-size: x-small;
+  max-width: 350px;
+  /* padding-top: 0.5rem; */
+}
+
+.outputText {
+  background-color: #f8f8f8;
+  border: 1px #e4e4e4 solid;
+  border-radius: 3px;
+  padding: 3rem;
+  width: 547px;
+  min-height: 147px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@media (prefers-color-scheme: dark) {
+  .outputText {
+    background-color: #222222;
+    border: 1px #555555 solid;
+  }
+}
+
+.screenReaderText {
+  margin-bottom: 2rem;
 }

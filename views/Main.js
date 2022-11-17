@@ -33,6 +33,7 @@ export default function Main({ textToFlip = "" }) {
     const toCopy = checked ? `${output} ${getAccessibleOutput(text)}` : output;
     await clipboard.writeText(toCopy);
     setCopied(true);
+    setTimeout(() => setCopied(false), 1000);
   };
   const shareLink = async () => {
     const url = new URL(location.href);
@@ -40,6 +41,7 @@ export default function Main({ textToFlip = "" }) {
     router.push(url);
     await clipboard.writeText(url);
     setCopied(true);
+    setTimeout(() => setCopied(false), 1000);
   };
 
   const handleChange = (e) => {
@@ -59,22 +61,18 @@ export default function Main({ textToFlip = "" }) {
         <input id="text" type="text" value={text} onChange={handleChange} />
       </div>
       <div className={styles.output}>
-        <div id="output-text">{output}</div>
-        <div
-          id="output-text"
-          hidden={!checked}
-          className={styles.accessibleOutput}
-        >
-          {accessibleOutput}
+        <div id="output-text" className={styles.outputText}>
+          {output}
+          <div
+            id="output-text"
+            hidden={!checked}
+            className={styles.accessibleOutput}
+          >
+            {accessibleOutput}
+          </div>
         </div>
         <div className={styles.controls}>
-          <button id="copy" onClick={copy}>
-            Copy
-          </button>
-          <button id="copy" onClick={shareLink}>
-            Share link
-          </button>
-          <div>
+          <div className={styles.screenReaderText}>
             <input
               id="accessibleMode"
               name="accessibleMode"
@@ -86,9 +84,15 @@ export default function Main({ textToFlip = "" }) {
               className={styles.accessibleModeLabel}
               htmlFor="accessibleMode"
             >
-              Support screen readers
+              Include screen reader text
             </label>
           </div>
+          <button id="copy" onClick={copy}>
+            Copy
+          </button>
+          <button id="copy" onClick={shareLink}>
+            Share link
+          </button>
         </div>
         <div
           className={`${styles.copied} ${
