@@ -28,7 +28,7 @@ export default function Input({ input }) {
         />
         <meta
           property="og:image"
-          content={`/api/image-preview?text=${input}`}
+          content={`/api/image-preview?text=${encodeURIComponent(input)}`}
         />
 
         <link rel="icon" href="/favicon.ico" />
