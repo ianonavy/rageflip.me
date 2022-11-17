@@ -26,6 +26,11 @@ export default function Input({ input }) {
           name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui"
         />
+        <meta
+          property="og:image"
+          content={`/api/image-preview?text=${input}`}
+        />
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
