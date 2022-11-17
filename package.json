@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.30",
     "next": "13.0.3",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "skia-canvas": "^1.0.1"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "eslint": "8.27.0",
