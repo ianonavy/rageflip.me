@@ -25,14 +25,17 @@ export default async function (req, res) {
     (
       <div
         style={{
-          backgroundColor: "white",
+          backgroundColor: "black",
+          color: "white",
           height: "100%",
           width: "100%",
           fontSize: 100,
           fontFamily: '"Noto Sans"',
           fontWeight: 600,
-          paddingTop: "100px",
-          paddingLeft: "50px",
+          display: "flex",
+          textAlign: "center",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         {rageFlipped(text)}
