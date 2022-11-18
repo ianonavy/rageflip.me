@@ -10,9 +10,9 @@ export const config = {
 const font = fetch(
   new URL(`../../assets/NotoSansKannada.otf`, import.meta.url)
 ).then((res) => res.arrayBuffer());
-const font2 = fetch(
-  new URL(`../../assets/NotoSansJP.otf`, import.meta.url)
-).then((res) => res.arrayBuffer());
+const font2 = fetch(new URL(`../../assets/rage.woff`, import.meta.url)).then(
+  (res) => res.arrayBuffer()
+);
 
 export default async function (req, res) {
   const { searchParams } = new URL(req.url);
