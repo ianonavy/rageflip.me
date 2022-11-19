@@ -204,10 +204,30 @@
   flex-direction: column;
 }
 
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
   .outputText {
     background-color: #222222;
     border: 1px #555555 solid;
+  }
+}
+
+@media screen and (prefers-contrast: more) {
+  .outputText {
+    border: 1px #000000 solid;
+  }
+
+  .footer {
+    border-top: 1px #000000 solid;
+  }
+}
+
+@media screen and (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  .outputText {
+    border: 1px #ffffff solid;
+  }
+
+  .footer {
+    border-top: 1px #ffffff solid;
   }
 }
 
