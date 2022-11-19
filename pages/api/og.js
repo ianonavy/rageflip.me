@@ -21,6 +21,8 @@ export default async function (req, res) {
   const fontData = await font;
   const fontData2 = await font2;
 
+  const fontSize = Math.round(84 - text.length);
+
   return new ImageResponse(
     (
       <div
@@ -29,9 +31,9 @@ export default async function (req, res) {
           color: "white",
           height: "100%",
           width: "100%",
-          fontSize: 100,
+          fontSize: fontSize,
           fontFamily: '"Noto Sans"',
-          fontWeight: 600,
+          fontWeight: 400,
           display: "flex",
           textAlign: "center",
           justifyContent: "center",
