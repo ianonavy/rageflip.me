@@ -137,6 +137,11 @@
   margin: 0.5rem;
 }
 
+.input input {
+  padding: 0.25rem;
+  font-size: medium;
+}
+
 .output {
   margin: 1rem;
 }
