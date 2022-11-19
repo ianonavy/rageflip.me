@@ -61,13 +61,9 @@ export default function Main({ textToFlip = "" }) {
         <input id="text" type="text" value={text} onChange={handleChange} />
       </div>
       <div className={styles.output}>
-        <div id="output-text" className={styles.outputText}>
+        <div className={styles.outputText}>
           {output}
-          <div
-            id="output-text"
-            hidden={!checked}
-            className={styles.accessibleOutput}
-          >
+          <div hidden={!checked} className={styles.accessibleOutput}>
             {accessibleOutput}
           </div>
         </div>
@@ -103,12 +99,16 @@ export default function Main({ textToFlip = "" }) {
       >
         Copied to clipboard
       </div>
-      <div className={styles.support}>
-        Like this app?{" "}
-        <a href="//www.buymeacoffee.com/justapotato" target="_blank">
-          Buy me a potato
-        </a>
-      </div>
+      <footer className={styles.footer}>
+        <a href="/privacy.html">Privacy</a>
+        <div>|</div>
+        <div className={styles.support}>
+          Like this app?&nbsp;
+          <a href="//www.buymeacoffee.com/justapotato" target="_blank">
+            Buy me a potato
+          </a>
+        </div>
+      </footer>
     </main>
   );
 }

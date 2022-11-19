@@ -15,18 +15,20 @@
 
 .footer {
   display: flex;
-  flex: 1;
-  padding: 2rem 0;
+  margin: 2rem 0;
   border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
+  font-size: small;
+}
+
+.footer > * {
+  margin: .5em;
 }
 
 .footer a {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
+  text-decoration: underline;
 }
 
 .title a {
@@ -166,8 +168,8 @@
 }
 
 .support {
-  margin-top: 2rem;
-  font-size: small;
+  display: flex;
+  flex-direction: row;
 }
 
 .support a {
