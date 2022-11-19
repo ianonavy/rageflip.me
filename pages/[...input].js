@@ -24,7 +24,7 @@ export default function Input({ input }) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0"
         />
         <meta
           property="og:image"
