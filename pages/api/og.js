@@ -21,7 +21,7 @@ export default async function (req, res) {
   const fontData = await font;
   const fontData2 = await font2;
 
-  const fontSize = Math.round(84 - text.length);
+  const fontSize = Math.max(Math.round(84 - text.length), 36);
 
   return new ImageResponse(
     (
