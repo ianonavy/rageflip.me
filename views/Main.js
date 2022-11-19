@@ -71,47 +71,44 @@ export default function Main({ textToFlip = "" }) {
             {accessibleOutput}
           </div>
         </div>
-        <div className={styles.controls}>
-          <div className={styles.screenReaderText}>
-            <input
-              id="accessibleMode"
-              name="accessibleMode"
-              type="checkbox"
-              defaultChecked={checked}
-              onChange={onCheck}
-            />
-            <label
-              className={styles.accessibleModeLabel}
-              htmlFor="accessibleMode"
-            >
-              Include screen reader text
-            </label>
-          </div>
-          <button id="copy" onClick={copy}>
-            Copy
-          </button>
-          <button id="copy" onClick={shareLink}>
-            Share link
-          </button>
-        </div>
-        <div
-          className={`${styles.copied} ${
-            copied ? styles.visible : styles.hidden
-          }`}
-        >
-          Copied to clipboard
-        </div>
       </div>
 
-      <footer>
-        <a
-          className={styles.support}
-          href="//www.buymeacoffee.com/justapotato"
-          target="_blank"
-        >
-          Donate a potato
+      <div className={styles.controls}>
+        <div className={styles.screenReaderText}>
+          <input
+            id="accessibleMode"
+            name="accessibleMode"
+            type="checkbox"
+            defaultChecked={checked}
+            onChange={onCheck}
+          />
+          <label
+            className={styles.accessibleModeLabel}
+            htmlFor="accessibleMode"
+          >
+            Include screen reader text
+          </label>
+        </div>
+        <button id="copy" onClick={copy}>
+          Copy
+        </button>
+        <button id="copy" onClick={shareLink}>
+          Share link
+        </button>
+      </div>
+      <div
+        className={`${styles.copied} ${
+          copied ? styles.visible : styles.hidden
+        }`}
+      >
+        Copied to clipboard
+      </div>
+      <div className={styles.support}>
+        Like this app?{" "}
+        <a href="//www.buymeacoffee.com/justapotato" target="_blank">
+          Buy me a potato
         </a>
-      </footer>
+      </div>
     </main>
   );
 }

@@ -161,11 +161,12 @@
 }
 
 .support {
-  position: absolute;
-  right: 0.5rem;
-  bottom: 0.5rem;
-  text-decoration: underline;
+  margin-top: 2rem;
   font-size: small;
+}
+
+.support a {
+  text-decoration: underline;
 }
 
 .accessibleModeLabel {
@@ -174,7 +175,7 @@
 }
 
 .controls {
-  margin: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .accessibleOutput {
